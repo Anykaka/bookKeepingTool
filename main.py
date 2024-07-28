@@ -1,38 +1,29 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow
-from openpyxl import load_workbook
-import unit_price, xlsx_ui, operate_ui
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QTableWidget
+import unit_price, ui
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+        self.setMinimumSize(640, 480)
+        self.table_ = ui.xlsx_ui(self)
         self.initUI()
+        self.show()
 
     def initUI(self):
-        self.tableWidget = QTableWidget(self)
-        self.setCentralWidget(self.tableWidget)
+        self.setCentralWidget(self.table_)
 
-        # 读取Excel文件
-        wb = load_workbook('default.xlsx')
-        sheet = wb.active
+    def resizeEvent(self, event):
+        self.table_.setGeometry(0, 0, self.width(), self.height())
 
-        # 获取行数和列数
-        rows = sheet.max_row
-        cols = sheet.max_column
-
-        # 设置表格的行数和列数
-        self.tableWidget.setRowCount(rows)
-        self.tableWidget.setColumnCount(cols)
-
-        # 读取数据并显示在表格中
-        for row in range(1, rows + 1):
-            for col in range(1, cols + 1):
-                cell_value = sheet.cell(row=row, column=col).value
-                item = QTableWidgetItem(str(cell_value))
-                self.tableWidget.setItem(row - 1, col - 1, item)
-
-        self.show()
+    def closeEvent(self, a0):
+        self.table_.running = False
+        self.table_.close()
 
 
 if __name__ == '__main__':
