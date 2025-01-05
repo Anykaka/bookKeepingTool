@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>项目物料清单管理系统</string>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonStyle::ToolButtonIconOnly</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTableWidget" name="Table"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="Files">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <widget class="QMenu" name="Import">
+     <property name="title">
+      <string>导入文件</string>
+     </property>
+     <addaction name="import_xml"/>
+    </widget>
+    <widget class="QMenu" name="Export">
+     <property name="title">
+      <string>导出文件</string>
+     </property>
+     <addaction name="export_xml"/>
+    </widget>
+    <addaction name="New"/>
+    <addaction name="Save"/>
+    <addaction name="Close"/>
+    <addaction name="Import"/>
+    <addaction name="Export"/>
+    <addaction name="Exit"/>
+   </widget>
+   <widget class="QMenu" name="DataBase">
+    <property name="title">
+     <string>数据库</string>
+    </property>
+    <addaction name="Connect"/>
+    <addaction name="DisConnect"/>
+    <addaction name="ChangeConnect"/>
+   </widget>
+   <widget class="QMenu" name="About">
+    <property name="title">
+     <string>说明</string>
+    </property>
+   </widget>
+   <addaction name="Files"/>
+   <addaction name="DataBase"/>
+   <addaction name="About"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="New">
+   <property name="text">
+    <string>新建文件</string>
+   </property>
+  </action>
+  <action name="export_xml">
+   <property name="text">
+    <string>xml</string>
+   </property>
+  </action>
+  <action name="import_xml">
+   <property name="text">
+    <string>xml</string>
+   </property>
+  </action>
+  <action name="Connect">
+   <property name="text">
+    <string>连接</string>
+   </property>
+  </action>
+  <action name="DisConnect">
+   <property name="text">
+    <string>断开连接</string>
+   </property>
+  </action>
+  <action name="ChangeConnect">
+   <property name="text">
+    <string>修改连接</string>
+   </property>
+  </action>
+  <action name="Save">
+   <property name="text">
+    <string>保存文件</string>
+   </property>
+  </action>
+  <action name="Close">
+   <property name="text">
+    <string>关闭文件</string>
+   </property>
+  </action>
+  <action name="Exit">
+   <property name="text">
+    <string>关闭</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
